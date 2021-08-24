@@ -1,0 +1,16 @@
+package io.optimus.data.generated.enum
+
+enum class Department {
+    WEBOPS,
+    FINANCE,
+    SPONSORSHIP_AND_PR,
+    SHOWS_AND_EXHIBITIONS,
+    ENVISAGE,
+    EVOLVE,
+    EVENTS_AND_WORKSHOPS,
+    PUBLICITY,
+    CONCEPT_AND_DESIGN,
+    OPERATIONS_AND_INFRASTRUCTURE_PLANNING,
+    ADMIN,
+    QMS
+}
