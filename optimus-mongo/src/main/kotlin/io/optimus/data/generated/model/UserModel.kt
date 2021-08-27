@@ -8,19 +8,19 @@ import org.litote.kmongo.Id
 
 @Serializable
 data class UserModel(
-    @SerialName("_id") var id: Id<UserModel>,
-    var name: String,
-    var email: String,
-    var rollNumber: String,
-    var role: UserRole,
-    var password: String,
-    var salt: String,
-    var department: Department,
-    var profilePic: String?,
-    var coverPic: String?,
-    var mobile: String,
-    var upi: String?,
-    var finManagerForDept: Department?,
-    var enabled: Boolean = false,
-    var verified: Boolean = false
+	@SerialName("_id") var id: Id<UserModel>,
+	var name: String,
+	var email: String,
+	var rollNumber: String,
+	var role: UserRole,
+	var password: String,
+	var salt: String,
+	var department: Department,
+	var profilePic: String?,
+	var coverPic: String?,
+	var mobile: String,
+	var upi: String?,
+	var finManagerForDept: Department?,
+	var enabled: Boolean = false,
+	var verified: Boolean = false
 )
