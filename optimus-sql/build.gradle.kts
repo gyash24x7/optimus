@@ -1,9 +1,11 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
+val kotlinVersion: String by project
 val kotestVersion: String by project
 val exposedVersion: String by project
 val hikariCpVersion: String by project
 val postgresDriverVersion: String by project
+val serializationVersion: String by project
 
 plugins {
 	kotlin("jvm")
@@ -13,8 +15,8 @@ plugins {
 }
 
 dependencies {
-	implementation(kotlin("stdlib"))
-	implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
+	implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
+	implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
 
 	implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
 	implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")

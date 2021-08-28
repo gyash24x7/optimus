@@ -1,5 +1,7 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
+val kotlinVersion: String by project
+val serializationVersion: String by project
 val kotestVersion: String by project
 val kmongoVersion: String by project
 
@@ -11,7 +13,8 @@ plugins {
 }
 
 dependencies {
-	implementation(kotlin("stdlib"))
+	implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
+	implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
 
 	implementation("org.litote.kmongo:kmongo-serialization:$kmongoVersion")
 

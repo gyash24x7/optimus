@@ -1,7 +1,9 @@
+val kotlinVersion: String by project
+
 plugins {
 	kotlin("jvm")
 }
 
 dependencies {
-	implementation(kotlin("stdlib"))
+	implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
 }

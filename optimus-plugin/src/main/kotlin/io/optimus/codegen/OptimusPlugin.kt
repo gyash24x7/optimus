@@ -1,11 +1,17 @@
 package io.optimus.codegen
 
-import com.sksamuel.hoplite.ConfigLoader
+import com.typesafe.config.ConfigFactory
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.hocon.Hocon
+import kotlinx.serialization.hocon.decodeFromConfig
 import org.gradle.api.DefaultTask
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.tasks.TaskAction
-import kotlin.io.path.Path
+import java.io.File
+
+@OptIn(ExperimentalSerializationApi::class)
+val hocon = Hocon {}
 
 class OptimusPlugin : Plugin<Project> {
 	override fun apply(project: Project) {
@@ -26,10 +32,13 @@ open class OptimusExtension {
 
 open class GenerateOptimusCodeTask : DefaultTask() {
 
+	@OptIn(ExperimentalSerializationApi::class)
 	@TaskAction
 	fun executeTask() {
 		val optimusExtension = project.extensions.getByName("optimus") as OptimusExtension
-		val schemaFile = project.layout.projectDirectory.file(optimusExtension.schemaFilePath).toString()
-		val config = ConfigLoader().loadConfigOrThrow<Schema>(Path(schemaFile))
+		val schemaFilePath = project.layout.projectDirectory.file(optimusExtension.schemaFilePath).toString()
+		val schemaConfig = ConfigFactory.parseFile(File(schemaFilePath))
+		val schema = hocon.decodeFromConfig<Schema>(schemaConfig)
+		println(schema)
 	}
 }

@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
 	base
 	kotlin("jvm") version "1.5.30" apply false
@@ -12,5 +14,11 @@ allprojects {
 	repositories {
 		mavenLocal()
 		mavenCentral()
+	}
+
+	tasks.withType<KotlinCompile> {
+		kotlinOptions {
+			freeCompilerArgs = listOf("-Xopt-in=kotlin.RequiresOptIn")
+		}
 	}
 }
