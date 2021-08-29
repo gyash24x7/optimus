@@ -8,7 +8,7 @@ object Users : UUIDTable("users") {
 	var name = varchar("name", 128)
 	var email = varchar("email", 256).uniqueIndex()
 	var rollNumber = varchar("roll_number", 8).uniqueIndex()
-	var role = enumerationByName("role", 16, UserRole::class)
+	var role = enumerationByName("role", 16, UserRole::class).default(UserRole.COORDINATOR)
 	var password = varchar("password", 1024)
 	var salt = varchar("salt", 256).uniqueIndex()
 	var department = enumerationByName("department", 64, Department::class)

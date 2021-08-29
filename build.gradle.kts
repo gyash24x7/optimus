@@ -1,5 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+val optimusVersion: String by project
+
 plugins {
 	base
 	kotlin("jvm") version "1.5.30" apply false
@@ -9,7 +11,7 @@ plugins {
 
 allprojects {
 	group = "io.optimus"
-	version = "1.0-SNAPSHOT"
+	version = optimusVersion
 
 	repositories {
 		mavenLocal()

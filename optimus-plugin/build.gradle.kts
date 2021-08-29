@@ -2,6 +2,9 @@ val kotlinPoetVersion: String by project
 val kasechangeVersion: String by project
 val serializationVersion: String by project
 val kotlinVersion: String by project
+val pluralizeVersion: String by project
+val typesafeConfigVersion: String by project
+val optimusVersion: String by project
 
 plugins {
 	kotlin("jvm")
@@ -17,10 +20,11 @@ dependencies {
 
 	implementation("com.squareup:kotlinpoet:$kotlinPoetVersion")
 	implementation("net.pearx.kasechange:kasechange:$kasechangeVersion")
-	implementation("com.typesafe:config:1.4.1")
+	implementation("io.github.encryptorcode:pluralize:$pluralizeVersion")
+	implementation("com.typesafe:config:$typesafeConfigVersion")
 
-	implementation(project(":optimus-sql"))
-	implementation(project(":optimus-mongo"))
+	implementation("io.optimus:optimus-sql:$optimusVersion")
+	implementation("io.optimus:optimus-mongo:$optimusVersion")
 }
 
 gradlePlugin {

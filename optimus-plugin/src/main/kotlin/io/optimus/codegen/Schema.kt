@@ -33,26 +33,21 @@ enum class FieldType {
 	ENUM,
 
 	@SerialName("Enum?")
-	NULLABLE_ENUM;
-
-	fun isNullable() =
-		listOf(NULLABLE_DOUBLE, NULLABLE_ENUM, NULLABLE_INT, NULLABLE_STRING, NULLABLE_BOOLEAN).contains(this)
+	NULLABLE_ENUM
 }
 
 @Serializable
 data class EnumDefinition(val values: List<String>)
 
 @Serializable
-data class ModelField(
+data class FieldData(
 	val type: FieldType,
-	val attributes: List<String> = emptyList(),
+	val unique: Boolean = false,
 	val default: String? = null,
 	val source: String? = null
-) {
-	val isRequired = !type.isNullable() && default == null
-}
+)
 
-typealias ModelDefinition = Map<String, ModelField>
+typealias ModelDefinition = Map<String, FieldData>
 
 @Serializable
 data class Schema(val models: Map<String, ModelDefinition>, val enums: Map<String, EnumDefinition>)
